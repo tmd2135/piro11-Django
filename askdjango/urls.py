@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/',include('blog.urls')),
     path('dojo/',include('dojo.urls')),
+    path('myapp/',include('myapp.urls')),
 ]
