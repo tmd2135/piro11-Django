@@ -21,7 +21,7 @@ class Post(models.Model):
                 validators=[lnglat_validator])
     status= models.CharField(max_length=1,choices=STATUS_CHOICES)
     #M:M 관계 (문자열로 클래스 지정)
-    tag_set = models.ManyToManyField('Tag')
+    tag_set = models.ManyToManyField('Tag',blank=True)
     #
     created_at = models.DateTimeField(auto_now_add=True)    #auto_now_add : 최초 저장할시 일시 저장
     updated_at = models.DateTimeField(auto_now=True)        #auto_now : 갱신이 될 때 마다 저장
