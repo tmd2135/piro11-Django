@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Post
+from .models import Post,Comment
 # Register your models here.
 
 @admin.register(Post)
@@ -28,5 +28,10 @@ class PostAdmin(admin.ModelAdmin):
 # admin.site.register(Post)
 #기본유저를 바꾸고싶을때 해지하고 등록할때 사용
 # admin.site.unregister(Post)
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    pass
 
 

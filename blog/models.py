@@ -6,6 +6,7 @@ def lnglat_validator(value):
         raise ValidationError('Invalid LngLat Type')
 
 # Create your models here.
+
 class Post(models.Model):
     STATUS_CHOICES = (
         ('d','Draft'),
@@ -22,6 +23,22 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)    #auto_now_add : 최초 저장할시 일시 저장
     updated_at = models.DateTimeField(auto_now=True)        #auto_now : 갱신이 될 때 마다 저장
 
-    #return 값을 str로 변환
+
+
+    class Meta:
+        ordering = ['-id']      #해당 필드 내림차순 정렬
+        # ordering = ['id']     #해당 필드 오름차순 정렬
+
+    # return 값을 str로 변환
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    author = models.CharField(max_length=20)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at =models.DateTimeField(auto_now=True)
+
+
+
