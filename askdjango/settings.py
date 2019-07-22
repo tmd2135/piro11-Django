@@ -63,7 +63,10 @@ ROOT_URLCONF = 'askdjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            #전제 askdjango안에 있는 templates안에 layout을 이용하기 위해
+            os.path.join(BASE_DIR,'askdjango','templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
