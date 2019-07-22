@@ -14,6 +14,7 @@ class Post(models.Model):
         ('d','Draft'),
         ('p','Published')
     )
+    #User와  Post는 1:N
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     # author = models.CharField(max_length=20)
     title = models.CharField(max_length=100, verbose_name='제목')    # 길이 제한 o
