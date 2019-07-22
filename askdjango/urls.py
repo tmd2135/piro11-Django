@@ -21,6 +21,7 @@ urlpatterns = [
     path('blog/',include('blog.urls')),
     path('dojo/',include('dojo.urls')),
     path('myapp/',include('myapp.urls')),
+    path('accounts/',include('accounts.urls')),
 ]
 
 # if settings.DEBUG:
