@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>AskDjango</h1>
-    <p>안녕하세요. 여러분의 파이썬/장고 페이스메이커가 되어드리겠습니다.</p>
+{% extends "blog/layout.html" %}
 
+
+{% block title %}
+    {{post.title}}
+{% endblock%}
+
+
+{% block content%}
     <form action="" method="get">
-        <input type="text" name="q" value="{{q}}"/>
-        <input type="submit" value="검색"/>
+            <input type="text" name="q" value="{{q}}"/>
+            <input type="submit" value="검색"/>
     </form>
 
     <ul>
@@ -31,5 +30,5 @@
         <li>텝플릿 경로를 잘 설정</li>
         <li>수정사항보기위해 추가</li>
     </ul>
-</body>
-</html>
+
+{% endblock %}
