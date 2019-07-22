@@ -20,6 +20,9 @@ class Post(models.Model):
                 help_text='위도/경도 포맷으로 입력',
                 validators=[lnglat_validator])
     status= models.CharField(max_length=1,choices=STATUS_CHOICES)
+    #M:M 관계 (문자열로 클래스 지정)
+    tag_set = models.ManyToManyField('Tag')
+    #
     created_at = models.DateTimeField(auto_now_add=True)    #auto_now_add : 최초 저장할시 일시 저장
     updated_at = models.DateTimeField(auto_now=True)        #auto_now : 갱신이 될 때 마다 저장
 
@@ -40,5 +43,9 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at =models.DateTimeField(auto_now=True)
 
+class Tag(models.Model):
+    name = models.CharField(max_length=50,unique=True)
 
+    def __str__(self):
+        return self.name
 
