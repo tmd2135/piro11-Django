@@ -1,6 +1,7 @@
 import re
 from django.db import models
 from django.forms import ValidationError
+from django.conf import settings
 
 def lnglat_validator(value):
     if not re.match(r'^([+-]?\d+\.?\d*),([+-]?\d+\.?\d*),value'):
@@ -13,7 +14,8 @@ class Post(models.Model):
         ('d','Draft'),
         ('p','Published')
     )
-    author = models.CharField(max_length=20)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    # author = models.CharField(max_length=20)
     title = models.CharField(max_length=100, verbose_name='제목')    # 길이 제한 o
     content = models.TextField(verbose_name='내용')                # 길이 제한 x
     tags= models.CharField(max_length=100,blank=True)
