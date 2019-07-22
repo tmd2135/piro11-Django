@@ -21,3 +21,7 @@ class Post(models.Model):
     status= models.CharField(max_length=1,choices=STATUS_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)    #auto_now_add : 최초 저장할시 일시 저장
     updated_at = models.DateTimeField(auto_now=True)        #auto_now : 갱신이 될 때 마다 저장
+
+    #return 값을 str로 변환
+    def __str__(self):
+        return self.title
