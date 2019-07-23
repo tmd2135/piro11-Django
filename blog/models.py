@@ -2,6 +2,8 @@ import re
 from django.db import models
 from django.forms import ValidationError
 from django.conf import settings
+from django.urls import reverse
+
 
 def lnglat_validator(value):
     if not re.match(r'^([+-]?\d+\.?\d*),([+-]?\d+\.?\d*),value'):
@@ -40,6 +42,9 @@ class Post(models.Model):
     # return 값을 str로 변환
     def __str__(self):
         return self.title
+
+    def get_absoulte_url(self):
+        return reverse('blog:post_detail', args=[self.id])
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
