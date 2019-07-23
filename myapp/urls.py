@@ -1,6 +1,7 @@
 from django.urls import re_path
 from . import views
 from . import views_cbv
+app_name = 'myapp'
 
 urlpatterns = [
     re_path(r'^list1/$',views.post_list1),

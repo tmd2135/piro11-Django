@@ -17,7 +17,7 @@
         <li>
             {{post.id}}
             <!--url reverse-->
-            <a href="{% url 'post_detail' post.id%}">
+            <a href='{% url "blog:post_detail" post.id%}'>
                 {{post.title}}
             </a>
 
