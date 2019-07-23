@@ -12,7 +12,8 @@ def lnglat_validator(value):
 class Post(models.Model):
     STATUS_CHOICES = (
         ('d','Draft'),
-        ('p','Published')
+        ('p','Published'),
+        ('w', 'Withdrawn'),
     )
     #User와  Post는 1:N
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
