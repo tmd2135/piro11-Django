@@ -7,23 +7,30 @@
 
 
 {% block content%}
-    <h2>{{ post.title }}</h2>
-    <!--linebreaks 는 개행-->
-    {{ post.content|linebreaks }}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>{{ post.title }}</h2>
+                <!--linebreaks 는 개행-->
+                {{ post.content|linebreaks }}
 
-    <hr/>
+                <hr/>
 
-    <h3>Comment</h3>
-    <ul>
-    {%for comment in post.comment_set.all%}
-        <li>
-            {{comment.message}}
-            <small>by{{comment.author}}</small>
-            <small>at{{comment.updated_at}}</small>
-        </li>
-    {%endfor%}
-    </ul>
+                <h3>Comment</h3>
+                <ul>
+                {%for comment in post.comment_set.all%}
+                    <li>
+                        {{comment.message}}
+                        <small>by{{comment.author}}</small>
+                        <small>at{{comment.updated_at}}</small>
+                    </li>
+                {%endfor%}
+                 </ul>
 
-    <hr/>
-    <a href="{% url 'blog:post_list'%}">글 목록</a>
+                <hr/>
+                <a href="{% url 'blog:post_list'%}"class="btn btn-primary">글 목록</a>
+            </div>
+        </div>
+    </div>
+
 {% endblock%}
