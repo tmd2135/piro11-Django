@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 # Create your views here.
+
 def post_list(request):
     qs = Post.objects.all()     #전체 Post를 가져오는 qs
     #q에 GET으로 가져와서 있으면 'q' 없으면 ''
