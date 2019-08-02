@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 # Create your views here.
 from dojo.forms import PostForm
@@ -48,6 +48,28 @@ def post_new(request):
 
     else:
         form = PostForm()
+    return render(request,'post_form.html',{
+        'form' : form,
+    })
+
+
+def post_edit(request,id):
+    post = get_object_or_404(Post, id=id)
+    if request.method == 'POST':
+        form = PostForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            # 방법 4
+            #중복 DB save를 방지
+            post = form.save(commit=False)
+            #사용자의 ip를 저장하는 방법
+            post.ip = request.META['REMOTE_ADDR']
+            post.save()
+
+            print(form.cleaned_data)
+            return redirect('/dojo/')
+
+    else:
+        form = PostForm(instance=post)
     return render(request,'post_form.html',{
         'form' : form,
     })
