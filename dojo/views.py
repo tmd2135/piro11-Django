@@ -37,8 +37,11 @@ def post_new(request):
             #                            content = form.cleaned_data['content'])
 
             # 방법 4
-            post = Post.objects.create(**form.cleaned_data)
-
+            #중복 DB save를 방지
+            post = form.save(commit=False)
+            #사용자의 ip를 저장하는 방법
+            post.ip = request.META['REMOTE_ADDR']
+            post.save()
 
             print(form.cleaned_data)
             return redirect('/dojo/')
